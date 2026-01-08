@@ -1,4 +1,4 @@
-from aes_encrypt import encrypt, decrypt
+from encryption.aes_encrypt import encrypt, decrypt
 
 SENSITIVE_FIELDS = {"ssn", "credit_card"}
 
@@ -19,3 +19,17 @@ def decrypt_row(row: dict) -> dict:
         else:
             decrypted_row[key] = value
     return decrypted_row
+
+
+if __name__ == "__main__":
+    sample = {
+        "name": "Alice",
+        "ssn": "123-45-6789",
+        "credit_card": "4111111111111111"
+    }
+
+    enc = encrypt_row(sample)
+    dec = decrypt_row(enc)
+
+    print("Encrypted:", enc)
+    print("Decrypted:", dec)
